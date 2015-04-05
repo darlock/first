@@ -1,1 +1,28 @@
 Hello git :-)
+
+Protocols
+  Local Protocol  - git clone file:///opt/git/project.git
+                  - got clone /opt/git/project.git  //faster
+                  - PROS: simple, file permission, network access
+                  - CONS: you must be always connected to share
+  HTTP  - older 1.6.6 - dump HTTP (Read only)
+                                    - simplicity (git dir in HTTP-document-root + post-update-hook)
+                                    
+        - newer 1.6.6 - SMART HTTP - simmilar to SSH
+                                    - authentitcation
+        - git clone https://....
+        - PROS: authentication - easy for users (no SSH keys neeeded)
+                commonly opened protocol in company firewalls
+        - CONS: difficult setup          
+                difficult caching credentials on user side
+  SSH - most common, becase SSH is setted on most unix servers
+        - git clone ssh://....
+        - git clone user@server:....
+        - PROS: relatively easy to set up , encrypted and secure, authentication
+                 efficiant - compact transfered data
+        - CONS: no anonymous access (for RO acces its needed to use other protocol)
+  GIT - special daemon, port 9418
+        - no authentication    
+        - git-daemon-export-ok file
+        - PROS - fastest
+        - CONS - no authentication, useful only for RO access, most difficult to set up
